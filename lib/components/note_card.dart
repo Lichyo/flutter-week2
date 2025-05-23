@@ -1,21 +1,18 @@
 import 'package:flutter/material.dart';
-import 'constants.dart';
+import 'package:flutter_week2/model/note.dart';
+import '../constants.dart';
 import 'package:intl/intl.dart';
 
 class NoteCard extends StatelessWidget {
-  final String title;
-  final String description;
   final Color color;
   final VoidCallback onPressed;
-  final DateTime date;
+  final Note note;
 
   const NoteCard({
     super.key,
-    required this.title,
-    required this.description,
     required this.color,
     required this.onPressed,
-    required this.date,
+    required this.note,
   });
 
   @override
@@ -27,9 +24,9 @@ class NoteCard extends StatelessWidget {
         child: Material(
           color: color,
           child: ListTile(
-            title: Text(title, style: kTitleTextStyle),
+            title: Text(note.title, style: kTitleTextStyle),
             subtitle: Text(
-              '$description\n${DateFormat('yyyy-MM-dd').format(date)}',
+              '${note.description}\n${DateFormat('yyyy-MM-dd').format(note.dateTime)}',
               style: kSubTitleTextStyle,
             ),
             isThreeLine: true,
