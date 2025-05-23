@@ -1,19 +1,18 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_week2/model/note.dart';
 import '../constants.dart';
 import 'package:intl/intl.dart';
-
+import '../model/note.dart';
 
 class NoteCard extends StatelessWidget {
+  final Note note;
   final Color color;
   final VoidCallback onPressed;
-  final Note note;
 
   const NoteCard({
     super.key,
+    required this.note,
     required this.color,
     required this.onPressed,
-    required this.note,
   });
 
   @override

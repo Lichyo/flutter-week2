@@ -1,6 +1,8 @@
 import 'constants.dart';
 import 'package:flutter/material.dart';
 import 'components/note_card.dart';
+import 'model/note.dart';
+import 'components/note_card.dart';
 import 'controller/note_service.dart';
 
 void main() => runApp(MaterialApp(theme: ThemeData.dark(), home: MyApp()));
@@ -18,6 +20,19 @@ class _MyAppState extends State<MyApp> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {
+          showDialog(
+            context: context,
+            builder:
+                (BuildContext context) => AlertDialog(
+                  title: TextField(onChanged: (value) {}),
+                  content: TextField(onChanged: (value) {}),
+                ),
+          );
+        },
+        child: Icon(Icons.add),
+      ),
       appBar: AppBar(title: const Text('Flutter Week 2')),
       body: ListView.builder(
         itemCount: _noteService.notes.length,
@@ -36,3 +51,4 @@ class _MyAppState extends State<MyApp> {
     );
   }
 }
+
