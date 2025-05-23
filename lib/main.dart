@@ -1,6 +1,9 @@
 import 'constants.dart';
 import 'package:flutter/material.dart';
-import 'note_card.dart';
+import 'component/note_card.dart';
+
+import 'model/note.dart';
+import 'controller/note_service.dart';
 
 void main() => runApp(MaterialApp(theme: ThemeData.dark(), home: MyApp()));
 
@@ -12,29 +15,7 @@ class MyApp extends StatefulWidget {
 }
 
 class _MyAppState extends State<MyApp> {
-  List<String> titles = [
-    '📌 Regularization Techniques in Deep Learning',
-    '🧠 Difference Between Memory and Registers',
-    '🔍 Common Git Errors and Fixes',
-    '🎯 Implementing Animations in Flutter',
-    '🛠️ Writing a Simple Web Scraper with Python',
-  ];
-
-  List<String> descriptions = [
-    'Brief overview of L1, L2, and dropout to prevent overfitting.',
-    'Registers are faster and smaller; memory stores larger data.',
-    'Covers merge conflicts, detached HEAD, and push issues.',
-    'Simple guide to use AnimatedContainer and Tween.',
-    'Uses requests and BeautifulSoup to extract web data.',
-  ];
-
-  List<DateTime> dateTimes = [
-    DateTime.now().subtract(const Duration(days: 1)),
-    DateTime.now().subtract(const Duration(days: 2)),
-    DateTime.now().subtract(const Duration(days: 3)),
-    DateTime.now().subtract(const Duration(days: 4)),
-    DateTime.now().subtract(const Duration(days: 5)),
-  ];
+  final NoteService _noteService = NoteService();
 
   @override
   Widget build(BuildContext context) {
@@ -54,18 +35,14 @@ class _MyAppState extends State<MyApp> {
       ),
       appBar: AppBar(title: const Text('Flutter Week 2')),
       body: ListView.builder(
-        itemCount: titles.length,
+        itemCount: _noteService.notes.length,
         itemBuilder: (context, index) {
           return NoteCard(
-            title: titles[index],
-            description: descriptions[index],
-            date: dateTimes[index],
+            note: _noteService.notes[index],
             color: colorPool[index % colorPool.length],
             onPressed: () {
               setState(() {
-                titles.removeAt(index);
-                descriptions.removeAt(index);
-                dateTimes.removeAt(index);
+                _noteService.deleteNote(index: index);
               });
             },
           );
@@ -74,4 +51,3 @@ class _MyAppState extends State<MyApp> {
     );
   }
 }
-
