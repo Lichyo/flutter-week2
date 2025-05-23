@@ -1,9 +1,8 @@
 import 'constants.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_week2/color_pool.dart';
-import 'package:intl/intl.dart';
+import 'note_card.dart';
 
-void main() => runApp(MyApp());
+void main() => runApp(MaterialApp(theme: ThemeData.dark(), home: MyApp()));
 
 class MyApp extends StatefulWidget {
   MyApp({super.key});
@@ -39,73 +38,40 @@ class _MyAppState extends State<MyApp> {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      theme: ThemeData.dark(),
-      home: Scaffold(
-        appBar: AppBar(title: const Text('Flutter Week 2')),
-        body: ListView.builder(
-          itemCount: titles.length,
-          itemBuilder: (context, index) {
-            return NoteCard(
-              title: titles[index],
-              des: descriptions[index],
-              date: dateTimes[index],
-              color: colorPool[index % colorPool.length],
-              onPressed: () {
-                setState(() {
-                  titles.removeAt(index);
-                  descriptions.removeAt(index);
-                });
-              },
-            );
-          },
-        ),
+    return Scaffold(
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {
+          showDialog(
+            context: context,
+            builder:
+                (BuildContext context) => AlertDialog(
+                  title: TextField(onChanged: (value) {}),
+                  content: TextField(onChanged: (value) {}),
+                ),
+          );
+        },
+        child: Icon(Icons.add),
+      ),
+      appBar: AppBar(title: const Text('Flutter Week 2')),
+      body: ListView.builder(
+        itemCount: titles.length,
+        itemBuilder: (context, index) {
+          return NoteCard(
+            title: titles[index],
+            description: descriptions[index],
+            date: dateTimes[index],
+            color: colorPool[index % colorPool.length],
+            onPressed: () {
+              setState(() {
+                titles.removeAt(index);
+                descriptions.removeAt(index);
+                dateTimes.removeAt(index);
+              });
+            },
+          );
+        },
       ),
     );
   }
 }
 
-class NoteCard extends StatelessWidget {
-  final String title;
-  final String des;
-  final Color color;
-  final VoidCallback onPressed;
-  final DateTime date;
-
-  const NoteCard({
-    super.key,
-    required this.title,
-    required this.des,
-    required this.color,
-    required this.onPressed,
-    required this.date,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.all(8.0),
-      child: ClipRRect(
-        borderRadius: BorderRadius.circular(16),
-        child: Material(
-          color: color,
-          child: ListTile(
-            title: Text(title, style: kTitleTextStyle),
-            subtitle: Text(
-              '$des\n${DateFormat('yyyy-MM-dd').format(date)}',
-              style: kSubTitleTextStyle,
-            ),
-            isThreeLine: true,
-            trailing: IconButton(
-              onPressed: onPressed,
-              icon: Icon(
-                Icons.remove_circle_outline_outlined,
-                color: Colors.grey.shade700,
-              ),
-            ),
-          ),
-        ),
-      ),
-    );
-  }
-}
