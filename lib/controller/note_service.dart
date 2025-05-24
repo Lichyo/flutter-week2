@@ -1,4 +1,4 @@
-import 'package:flutter_week2/note.dart';
+import 'package:flutter_week2/model/note.dart';
 class NoteService{
   final List <Note> _notes = [//private
     Note(title: '📌 Regularization Techniques in Deep Learning', description: 'Registers are faster and smaller; memory stores larger data.', dateTime: DateTime.now().subtract(const Duration(days: 1))),

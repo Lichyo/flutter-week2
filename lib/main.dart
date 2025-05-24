@@ -1,6 +1,6 @@
 import 'constants.dart';
 import 'package:flutter/material.dart';
-import 'note_card.dart';
+import 'components/note_card.dart';
 import 'controller/note_service.dart';
 
 void main() => runApp(MaterialApp(theme: ThemeData.dark(), home: MyApp()));
