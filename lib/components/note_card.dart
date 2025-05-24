@@ -5,7 +5,6 @@ import 'package:intl/intl.dart';
 
 
 class NoteCard extends StatelessWidget {
-
   final Color color;
   final VoidCallback onPressed;
   final Note note;

@@ -6,32 +6,18 @@ import 'controller/note_service.dart';
 void main() => runApp(MaterialApp(theme: ThemeData.dark(), home: MyApp()));
 
 class MyApp extends StatefulWidget {
-  MyApp({super.key});
+  const MyApp({super.key});
 
   @override
   State<MyApp> createState() => _MyAppState();
 }
 
 class _MyAppState extends State<MyApp> {
-
   final NoteService _noteService = NoteService();
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      floatingActionButton: FloatingActionButton(
-        onPressed: () {
-          showDialog(
-            context: context,
-            builder:
-                (BuildContext context) => AlertDialog(
-                  title: TextField(onChanged: (value) {}),
-                  content: TextField(onChanged: (value) {}),
-                ),
-          );
-        },
-        child: Icon(Icons.add),
-      ),
       appBar: AppBar(title: const Text('Flutter Week 2')),
       body: ListView.builder(
         itemCount: _noteService.notes.length,
@@ -41,7 +27,7 @@ class _MyAppState extends State<MyApp> {
             color: colorPool[index % colorPool.length],
             onPressed: () {
               setState(() {
-                _noteService.notes.removeAt(index);
+                _noteService.deleteNote(index: index);
               });
             },
           );

@@ -1,11 +1,33 @@
 import 'package:flutter_week2/model/note.dart';
 class NoteService{
   final List <Note> _notes = [//private
-    Note(title: '📌 Regularization Techniques in Deep Learning', description: 'Registers are faster and smaller; memory stores larger data.', dateTime: DateTime.now().subtract(const Duration(days: 1))),
-    Note(title: '🧠 Difference Between Memory and Registers', description: 'Brief overview of L1, L2, and dropout to prevent overfitting.', dateTime: DateTime.now().subtract(const Duration(days: 2))),
-    Note(title: '🔍 Common Git Errors and Fixes', description: 'Covers merge conflicts, detached HEAD, and push issues.', dateTime: DateTime.now().subtract(const Duration(days: 3))),
-    Note(title: '🎯 Implementing Animations in Flutter', description: 'Simple guide to use AnimatedContainer and Tween.', dateTime:DateTime.now().subtract(const Duration(days: 4))),
-    Note(title: '🛠️ Writing a Simple Web Scraper with Python', description: 'Uses requests and BeautifulSoup to extract web data.', dateTime: DateTime.now().subtract(const Duration(days: 5)))
+    Note(
+      title: '📌 Regularization Techniques in Deep Learning',
+      description:
+      'Brief overview of L1, L2, and dropout to prevent overfitting.',
+      dateTime: DateTime.now().subtract(const Duration(days: 1)),
+    ),
+    Note(
+      title: '🧠 Difference Between Memory and Registers',
+      dateTime: DateTime.now().subtract(const Duration(days: 2)),
+      description:
+      'Registers are faster and smaller; memory stores larger data.',
+    ),
+    Note(
+      title: '🔍 Common Git Errors and Fixes',
+      dateTime: DateTime.now().subtract(const Duration(days: 3)),
+      description: 'Covers merge conflicts, detached HEAD, and push issues.',
+    ),
+    Note(
+      title: '🎯 Implementing Animations in Flutter',
+      dateTime: DateTime.now().subtract(const Duration(days: 4)),
+      description: 'Simple guide to use AnimatedContainer and Tween.',
+    ),
+    Note(
+      title: '🛠️ Writing a Simple Web Scraper with Python',
+      dateTime: DateTime.now().subtract(const Duration(days: 5)),
+      description: 'Uses requests and BeautifulSoup to extract web data.',
+    ),
   ];
 
   List <Note> get notes => _notes;
@@ -13,6 +35,3 @@ class NoteService{
     _notes.removeAt(index);
   }
 }
-
-
-
