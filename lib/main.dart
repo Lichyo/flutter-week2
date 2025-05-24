@@ -1,9 +1,7 @@
+import 'package:flutter_week2/controller/note_service.dart';
 import 'constants.dart';
 import 'package:flutter/material.dart';
 import 'components/note_card.dart';
-import 'model/note.dart';
-import 'components/note_card.dart';
-import 'controller/note_service.dart';
 
 void main() => runApp(MaterialApp(theme: ThemeData.dark(), home: MyApp()));
 
@@ -51,4 +49,3 @@ class _MyAppState extends State<MyApp> {
     );
   }
 }
-
