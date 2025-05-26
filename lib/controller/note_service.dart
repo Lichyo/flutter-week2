@@ -32,6 +32,7 @@ class NoteService{
   ];
 
   List <Note> get notes => _notes;
+  //List型別 Note物件 notes回傳_notes
 
   void deleteNote({required int index}){
     _notes.removeAt(index);
