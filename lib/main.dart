@@ -1,52 +1,20 @@
-import 'constants.dart';
 import 'package:flutter/material.dart';
-import 'components/note_card.dart';
-import 'model/note.dart';
 import 'package:flutter_week2/controller/note_service.dart';
+import 'view/note_page.dart';
 
-void main() => runApp(MaterialApp(theme: ThemeData.dark(), home: MyApp()));
-
-class MyApp extends StatefulWidget {
-  MyApp({super.key});
-
-  @override
-  State<MyApp> createState() => _MyAppState();
+void main() {
+  final NoteService noteService = NoteService();
+  runApp(
+    MaterialApp(home: MyApp(noteService: noteService), theme: ThemeData.dark()),
+  );
 }
 
-class _MyAppState extends State<MyApp> {
+class MyApp extends StatelessWidget {
+  const MyApp({super.key, required this.noteService});
+  final NoteService noteService;
 
-  final NoteService noteService = NoteService();
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      floatingActionButton: FloatingActionButton(
-        onPressed: () {
-          showDialog(
-            context: context,
-            builder:
-                (BuildContext context) => AlertDialog(
-                  title: TextField(onChanged: (value) {}),
-                  content: TextField(onChanged: (value) {}),
-                ),
-          );
-        },
-        child: Icon(Icons.add),
-      ),
-      appBar: AppBar(title: const Text('Flutter Week 2')),
-      body: ListView.builder(
-        itemCount: noteService.notes.length,
-        itemBuilder: (context, index) {
-          return NoteCard(
-            note: noteService.notes[index],
-            color: colorPool[index % colorPool.length],
-            onPressed: () {
-              setState(() {
-                noteService.deleteNote(index:index);
-              });
-            },
-          );
-        },
-      ),
-    );
+    return NotePage(noteService: noteService);
   }
 }
