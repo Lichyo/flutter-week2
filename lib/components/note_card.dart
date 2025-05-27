@@ -24,9 +24,11 @@ class NoteCard extends StatelessWidget {
         child: Material(
           color: color,
           child: ListTile(
+
             title: Text(note.tilte, style: kTitleTextStyle),
             subtitle: Text(
               '${note.descripion}\n${DateFormat('yyyy-MM-dd').format(note.dateTime)}',
+
               style: kSubTitleTextStyle,
             ),
             isThreeLine: true,
