@@ -1,7 +1,7 @@
 import 'constants.dart';
 import 'package:flutter/material.dart';
-import 'note_card.dart';
 import 'note_service.dart';
+import 'package:flutter_week2/components/note_card.dart';
 
 void main() => runApp(MaterialApp(theme: ThemeData.dark(), home: MyApp()));
 
@@ -13,8 +13,8 @@ class MyApp extends StatefulWidget {
 }
 
 class _MyAppState extends State<MyApp> {
-NoteService noteService=NoteService();
 
+  final NoteService noteService = NoteService();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
