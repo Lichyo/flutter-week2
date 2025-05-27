@@ -1,40 +1,41 @@
 import 'package:flutter_week2/model/note.dart';
 
-class NoteService {
-  //_ -> 設private
-  final List<Note> _notes = [
+class NoteService{
+  List<Note> _notes = [
     Note(
-      title: '📌 Regularization Techniques in Deep Learning',
-      description:
-          'Brief overview of L1, L2, and dropout to prevent overfitting.',
+      tilte: '📌 Regularization Techniques in Deep Learning',
+      descripion:
+      'Brief overview of L1, L2, and dropout to prevent overfitting.',
       dateTime: DateTime.now().subtract(const Duration(days: 1)),
     ),
     Note(
-      title: '🔍 Common Git Errors and Fixes',
-      dateTime: DateTime.now().subtract(const Duration(days: 3)),
-      description: 'Covers merge conflicts, detached HEAD, and push issues.',
-    ),
-    Note(
-      title: '🧠 Difference Between Memory and Registers',
+      tilte: '🧠 Difference Between Memory and Registers',
+      descripion:
+      'Registers are faster and smaller; memory stores larger data.',
       dateTime: DateTime.now().subtract(const Duration(days: 2)),
-      description:
-          'Registers are faster and smaller; memory stores larger data.',
     ),
     Note(
-      title: '🎯 Implementing Animations in Flutter',
+      tilte: '🔍 Common Git Errors and Fixes',
+      descripion: 'Covers merge conflicts, detached HEAD, and push issues.',
+      dateTime: DateTime.now().subtract(const Duration(days: 3)),
+    ),
+    Note(
+      tilte: '🎯 Implementing Animations in Flutter',
+      descripion: 'Simple guide to use AnimatedContainer and Tween.',
       dateTime: DateTime.now().subtract(const Duration(days: 4)),
-      description: 'Simple guide to use AnimatedContainer and Tween.',
     ),
     Note(
-      title: '🛠️ Writing a Simple Web Scraper with Python',
+      tilte: '🛠️ Writing a Simple Web Scraper with Python',
+      descripion: 'Uses requests and BeautifulSoup to extract web data.',
       dateTime: DateTime.now().subtract(const Duration(days: 5)),
-      description: 'Uses requests and BeautifulSoup to extract web data.',
     ),
   ];
 
-  List<Note> get notes=>_notes;
+  List <Note> get notes => _notes;
+  //List型別 Note物件 notes回傳_notes
 
-  void deleteNote({required int index}) {
-    notes.removeAt(index);
+  void deleteNote({required int index}){
+    _notes.removeAt(index);
   }
 }
+

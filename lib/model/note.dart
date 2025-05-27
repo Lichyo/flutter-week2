@@ -1,11 +1,13 @@
 class Note {
-  final String title;
-  final String description;
+
+  final String tilte;
+  final String descripion;
   final DateTime dateTime;
 
   Note({
-    required this.title,
-    required this.dateTime,
-    required this.description,
+    required this.tilte,
+    required this.descripion,
+    required this.dateTime
+
   });
 }
